@@ -1,0 +1,100 @@
+extends layout
+
+block layout-content
+    h1.titulo.font.text-center.text-success Productos Ecológicos
+
+    .container.mt-5
+        // Filtro de búsqueda y selección de categorías
+        .row.mb-4
+            .col-md-6
+                input.form-control(type="text", placeholder=" Buscar productos...", id="searchInput")
+            .col-md-6
+                select.form-select(id="categorySelect")
+                    option(value="Todos") Todos
+                    option(value="Lácteos") Lácteos
+                    option(value="Verduras") Verduras
+                    option(value="Frutas") Frutas
+                    option(value="Granos") Granos
+
+        // Sección de productos
+        .row#productContainer
+            // Aquí no se deben incluir productos de ejemplo directamente
+
+    // Mensaje si no hay productos encontrados
+    p#noProductsMessage.text-center.text-green-700.mt-8(style="display: none;") No se encontraron productos que coincidan con tu búsqueda.
+
+    script.
+        // Productos
+        const products = [
+            { id: 1, name: "Queso Fresco", category: "Lácteos", price: 4.99, image: "/img/Queso.jpeg" },
+            { id: 2, name: "Leche Orgánica", category: "Lácteos", price: 1.99, image: "/img/Leche.jpeg" },
+            { id: 3, name: "Yogur Natural", category: "Lácteos", price: 3.49, image: "/img/Yogurt.jpeg" },
+            { id: 4, name: "Espinacas Frescas", category: "Verduras", price: 2.49, image: "/img/Espinaca.jpeg" },
+            { id: 5, name: "Tomates", category: "Verduras", price: 3.99, image: "/img/Tomate.jpeg" },
+            { id: 6, name: "Zanahorias", category: "Verduras", price: 1.79, image: "/img/Zanahoria.jpeg" },
+            { id: 7, name: "Manzanas", category: "Frutas", price: 5.99, image: "/img/Manzana.jpeg" },
+            { id: 8, name: "Naranjas", category: "Frutas", price: 4.49, image: "/img/Naranja.jpeg" },
+            { id: 9, name: "Bananas", category: "Frutas", price: 1.99, image: "/img/Banano.jpeg" },
+            { id: 10, name: "Frijoles Negros", category: "Granos", price: 1.49, image: "/img/Frijoles.jpeg" },
+            { id: 11, name: "Arroz Integral", category: "Granos", price: 2.99, image: "/img/Arroz.jpeg" },
+            { id: 12, name: "Lentejas", category: "Granos", price: 1.89, image: "/img/Lentejas.jpeg" },
+        ];
+
+        const searchInput = document.getElementById("searchInput");
+        const categorySelect = document.getElementById("categorySelect");
+        const noProductsMessage = document.getElementById("noProductsMessage");
+
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categorySelect.value;
+
+            const filteredProducts = products.filter(product =>
+                (selectedCategory === "Todos" || product.category === selectedCategory) &&
+                product.name.toLowerCase().includes(searchTerm)
+            );
+
+            renderProducts(filteredProducts);
+        }
+
+        function renderProducts(filteredProducts) {
+            const productGrid = document.getElementById('productContainer');
+            productGrid.innerHTML = ""; // Limpia el contenedor de productos
+
+            if (filteredProducts.length === 0) {
+                noProductsMessage.style.display = "block"; // Muestra mensaje si no hay productos
+            } else {
+                noProductsMessage.style.display = "none"; // Oculta el mensaje
+            }
+
+            filteredProducts.forEach(product => {
+                const colDiv = document.createElement("div");
+                colDiv.classList.add("col-md-4", "mb-4");
+
+                const card = `
+                    <div class="card borde">
+                        <div class="card-body">
+                            <img src="${product.image}" alt="${product.name}" class="img-fluid mb-3"/>
+                            <h3 class="text-success">${product.name}</h3>
+                            <span class="text-muted">
+                                <i class="bi bi-tag-fill"></i> ${product.category}
+                            </span>
+                            <p class="text-danger">$${product.price.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <button class="agregar-al-carrito">
+                                <i class="bi bi-cart-plus-fill"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                colDiv.innerHTML = card;
+                productGrid.appendChild(colDiv);
+            });
+        }
+
+        searchInput.addEventListener("input", filterProducts);
+        categorySelect.addEventListener("change", filterProducts);
+
+        // Render all products on page load
+        renderProducts(products);

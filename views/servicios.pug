@@ -1,0 +1,84 @@
+extends layout
+
+block layout-content
+
+    h1.titulo.text-center.font.text-success Servicios y Beneficios del SENA
+    .container
+        .card
+            .card-header
+                i.fas.fa-graduation-cap
+                span Formación Profesional
+            button#btn-formacion(type="button") Más información
+            .card-content#content-formacion(style="display: none;")
+                p Programas técnicos y tecnológicos gratuitos en diversas áreas.
+                p Accede a una amplia gama de programas de formación que te prepararán para el mundo laboral con habilidades prácticas y conocimientos teóricos sólidos.
+
+        .card
+            .card-header
+                i.fas.fa-lightbulb
+                span Emprendimiento
+            button#btn-emprendimiento(type="button") Más información
+            .card-content#content-emprendimiento(style="display: none;")
+                p Apoyo para crear y desarrollar tu propia empresa.
+                p Recibe asesoría, capacitación y posibilidades de financiamiento para convertir tu idea de negocio en una realidad exitosa.
+
+        .card
+            .card-header
+                i.fas.fa-briefcase
+                span Empleabilidad
+            button#btn-empleabilidad(type="button") Más información
+            .card-content#content-empleabilidad(style="display: none;")
+                p Bolsa de empleo y orientación laboral.
+                p Conecta con empresas que buscan talento SENA y recibe orientación personalizada para mejorar tus oportunidades de empleo.
+
+        .card
+            .card-header
+                i.fas.fa-book
+                span Certificación de Competencias
+            button#btn-certificacion(type="button") Más información
+            .card-content#content-certificacion(style="display: none;")
+                p Reconocimiento de habilidades y conocimientos adquiridos.
+                p Obtén un reconocimiento oficial de tus habilidades, incluso si las adquiriste a través de la experiencia laboral o el aprendizaje autodidacta.
+
+        .card
+            .card-header
+                i.fas.fa-users
+                span Formación Complementaria
+            button#btn-complementaria(type="button") Más información
+            .card-content#content-complementaria(style="display: none;")
+                p Cursos cortos para actualizar tus conocimientos.
+                p Mantente actualizado con cursos cortos en diversas áreas que complementarán tu formación y mejorarán tu perfil profesional.
+
+        .card
+            .card-header
+                i.fas.fa-globe
+                span Internacionalización
+            button#btn-internacionalizacion(type="button") Más información
+            .card-content#content-internacionalizacion(style="display: none;")
+                p Oportunidades de formación y práctica en el extranjero.
+                p Amplía tus horizontes con programas de intercambio y prácticas internacionales que enriquecerán tu experiencia profesional y personal.
+
+    script.
+        // Función para manejar la visibilidad de cada sección
+        function toggleContent(buttonId, contentId) {
+            var button = document.getElementById(buttonId);
+            var content = document.getElementById(contentId);
+
+            button.onclick = function() {
+                if(content.style.display === "block") {
+                    content.style.display = "none";
+                    button.textContent = "Más información";
+                } else {
+                    content.style.display = "block";
+                    button.textContent = "Menos información";
+                }
+            }
+        }
+
+        // Asignar eventos a cada botón
+        toggleContent('btn-formacion', 'content-formacion');
+        toggleContent('btn-emprendimiento', 'content-emprendimiento');
+        toggleContent('btn-empleabilidad', 'content-empleabilidad');
+        toggleContent('btn-certificacion', 'content-certificacion');
+        toggleContent('btn-complementaria', 'content-complementaria');
+        toggleContent('btn-internacionalizacion', 'content-internacionalizacion');

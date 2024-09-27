@@ -1,0 +1,120 @@
+extends layout
+
+block layout-content
+    div.View
+        //- Contenedor para la imagen
+        div.HeaderContainer
+            img(src="/img/Head.jpg" alt="Encabezado Tienda CBA" class="HeaderImage d-none d-sm-block")
+            hr
+
+        //- contenido
+        section.hero
+            div.container
+                h1 SENA - Servicio Nacional de Aprendizaje
+                h2 Bienvenidos al SENA
+                p Impulsando el desarrollo profesional y técnico en Colombia.
+                a(href="#contact", class="btn-primary boton") Contáctanos
+
+        main
+        section#about.about
+            div.container
+                h2.fs-1 Sobre el SENA
+                p El SENA es una entidad pública colombiana dedicada a la formación profesional integral en diversos campos técnicos y tecnológicos. Su misión es contribuir al desarrollo de las competencias laborales de los colombianos a través de programas educativos y de formación que respondan a las necesidades del mercado laboral.
+                img(src="/img/CentroSena.jpg" alt="Centro Sena" class="Imagenn")
+
+        section#services.services
+            div.container
+                h2.fs-1 Programas y Servicios
+            div.services-container
+                div.service
+                    h3 Formación Técnica
+                    p Ofrecemos una amplia gama de programas de formación técnica en diferentes áreas, adaptados a las necesidades del mercado laboral.
+                div.service
+                    h3 Educación Tecnológica
+                    p Programas avanzados en áreas tecnológicas para preparar a los estudiantes para los desafíos del futuro.
+                div.service
+                    h3 Emprendimiento
+                    p Capacitación y apoyo para el desarrollo de proyectos emprendedores y de innovación.
+
+        section#testimonials.testimonials
+            div.container
+                h2.fs-1 Instalaciones
+                
+                div.row.row-cols-1.row-cols-md-3.g-4
+                    div.col.mb-4
+                        div.card.testimonio-card
+                            div.card-body
+                                img(src="/img/Testimonio.jpg" alt="Foto de Testimonio 1" class="card-img-top rounded-circle mb-3")
+                                h5.card-title Cafeteria
+                                p.card-text "Este es un comentario de ejemplo del primer testimonio. Es muy positivo y detallado."
+                                p.card-text
+                                    small.text-muted - Cliente 1
+                    div.col.mb-4
+                        div.card.testimonio-card
+                            div.card-body
+                                img(src="/img/Testimonio.jpg" alt="Foto de Testimonio 2" class="card-img-top rounded-circle mb-3")
+                                h5.card-title Auditorio
+                                p.card-text "Este es un comentario de ejemplo del segundo testimonio. Es muy positivo y detallado."
+                                p.card-text
+                                    small.text-muted - Cliente 2
+                    div.col.mb-4
+                        div.card.testimonio-card
+                            div.card-body
+                                img(src="/img/Testimonio.jpg" alt="Foto de Testimonio 3" class="card-img-top rounded-circle mb-3")
+                                h5.card-title Canchas
+                                p.card-text "Este es un comentario de ejemplo del tercer testimonio. Es muy positivo y detallado."
+                                p.card-text
+                                    small.text-muted - Cliente 3
+
+        section#contact.contact.fondoo
+            div.container
+                h2.fs-1.text-with-border Contacto
+                form(action="#", method="post")
+                    label(for="name") Nombre:
+                    input(type="text", id="name", name="name", required)
+                    label(for="email") Correo Electrónico:
+                    input(type="email", id="email", name="email", required)
+                    label(for="message") Mensaje:
+                    textarea(id="message", name="message", rows="4", required)
+                    button(type="submit", class="btn-primary") Enviar
+        
+        //- FOOTER/PIE DE PAGINA 
+        footer.footer.container-fluid.bg-dark.text-white.py-4.imgFoote
+            div.row
+                div.col-12.col-md-4
+                    h5.text-with-border Contacto
+                    ul.list-unstyled
+                        li
+                            i.fas.fa-map-marker-alt.text-with-border
+                            |  Dirección: Calle Falsa 123, Ciudad, País
+                        li
+                            i.fas.fa-phone-alt.text-with-border
+                            |  Teléfono: +1 234 567 890
+                        li
+                            i.fas.fa-envelope.text-with-border
+                            |  Email: contacto@tiendaexpress.com
+                div.col-12.col-md-4
+                    h5.text-with-border Síguenos
+                    p Mantente conectado a través de nuestras redes sociales
+                    a.face(href="https://facebook.com", target="_blank", class="text-white")
+                        i.fab.fa-facebook-square.fa-2x.mx-2
+                    a.face(href="https://twitter.com", target="_blank", class="text-white")
+                        i.fab.fa-twitter-square.fa-2x.mx-2
+                    a.face(href="https://instagram.com", target="_blank", class="text-white")
+                        i.fab.fa-instagram-square.fa-2x.mx-2
+                    a.face(href="https://linkedin.com", target="_blank", class="text-white")
+                        i.fab.fa-linkedin.fa-2x.mx-2
+                div.col-12.col-md-4
+                    h5.text-with-border Suscríbete a nuestro boletín
+                    p Recibe las últimas noticias y ofertas exclusivas directamente en tu bandeja de entrada.
+                    form.formFooter(action="/suscripcion" method="post")
+                        div.input-group
+                            input.form-control(type="email" name="email" placeholder="Introduce tu email" required)
+                            button.suscribirse(type="submit") Suscribirse
+            div.footerss.row
+                div.col-12.text-center.mt-4
+                    p © 2024 Tienda Express. Todos los derechos reservados.
+                    a(href="/terminos" class="text-white") Términos y condiciones
+                    |  | 
+                    a(href="/privacidad" class="text-white") Política de privacidad
+            p Realizado por @SofiaSanchez

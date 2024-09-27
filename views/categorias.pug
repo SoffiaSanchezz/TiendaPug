@@ -1,0 +1,17 @@
+//- // categorias.pug
+
+//- extends layout
+
+//- block layout-content
+//-     div.container
+//-         h1 #{title}
+//-         div.row
+//-             each producto in productos
+//-                 div.col-md-4.mb-4
+//-                     div.card
+//-                         img.card-img-top(src=producto.imagen, alt=producto.nombre)
+//-                         div.card-body
+//-                             h5.card-title #{producto.nombre}
+//-                             p.card-text #{producto.descripcion}
+//-                             p.card-text Precio: $#{producto.precio}
+//-                             button.btn.btn-primary(data-bs-toggle="modal", data-bs-target="#productDetailsModal", data-producto-id=producto.id) Ver detalles

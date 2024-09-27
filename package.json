@@ -1,0 +1,25 @@
+{
+  "name": "tiendapug",
+  "version": "1.0.0",
+  "description": "Proyecto basico para crear una aplicacion monolitica con node.js + express.js + pug templates",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ./index.js",
+    "bs-config": "browser-sync init",
+    "ui":"browser-sync init start --config bs-config.js"
+  },
+
+  "keywords": [],
+  "author": "Sofia Sanchez",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "pug": "^3.0.3"
+  }
+}
